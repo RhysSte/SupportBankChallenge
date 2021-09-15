@@ -8,8 +8,10 @@ namespace SupportBankChallenges
 {
     class Accounts
     {
-        string[] name;
-        int bal;
-        string listOfTransactions;
+        public string[] name;
+        public decimal balance;
+        public string listOfTransactions;
+
+        
     }
 }
