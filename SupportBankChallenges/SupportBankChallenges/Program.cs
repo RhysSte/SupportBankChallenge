@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
+
 
 
 namespace SupportBankChallenges
@@ -63,21 +63,82 @@ namespace SupportBankChallenges
 
                 accountToExist = false;
                 accountFromExist = false;
+            }            
+
+            var command = Console.ReadLine();
+
+            if (command == "List All")
+            {
+                foreach (Accounts accounting in accountsList)
+                {
+                    if (accounting.balance > 0)
+                    {
+
+                        Console.WriteLine(accounting.name + " is owed £" + accounting.balance);
+                    }
+                    if (accounting.balance < 0)
+                    {
+                        accounting.balance = accounting.balance * -1;
+                        Console.WriteLine(accounting.name + " owes £" + accounting.balance);
+                    }
+                }
+            }
+            else
+            {
+                var name = command;
+
+                foreach(Transaction transactions in list)
+                {
+                
+                    if (transactions.fromPerson.Equals(name))
+                    {
+                        transactions.Show();
+                    }
+                    else if (transactions.toPerson.Equals(name)) 
+                    {
+                        transactions.Show();
+                    }
+                }
             }
 
-            foreach (Accounts accounting in accountsList)
-            {
-                if (accounting.balance > 0)
+            // Next I want to add a switch case menu system that allows a user to go back
+            /*
+            bool on = true;
+
+            while (on)
+{
+                Console.WriteLine("Enter Customer Details (1)");
+                Console.WriteLine("Enter usage data (2)");
+                Console.WriteLine("Display usage data (3)");
+                Console.WriteLine("Exit (e)");
+
+                string menu = Console.ReadLine();
+
+                switch (menu)
                 {
-                    
-                    Console.WriteLine(accounting.name + " is owed £" + accounting.balance);
+                    case "1":
+
+                        Console.WriteLine("\n Press Enter to go back");
+                        break;
+
+                    case "2":
+
+                        Console.WriteLine("\n Press Enter to go back");
+                        break;
+
+                    case "3":
+                        on = false;
+                        Console.WriteLine("See You Later :)");
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a Valid Selection");
+                        break;
                 }
-                if (accounting.balance < 0)
-                {
-                    accounting.balance = accounting.balance * -1;
-                    Console.WriteLine(accounting.name + " owes £" + accounting.balance);
-                }
+                Console.ReadLine();
             }
+
+    */
+
 
             Console.WriteLine("Done");
             Console.ReadLine();
