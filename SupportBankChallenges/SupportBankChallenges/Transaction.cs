@@ -12,9 +12,9 @@ namespace SupportBankChallenges
         public string narrative;
         public string toPerson;
         public string fromPerson;
-        public string dateOfTransaction;
+        public DateTime dateOfTransaction;
 
-        public Transaction(string dateOfTransaction, string fromPerson, string toPerson, string narrative, decimal amount)
+        public Transaction(DateTime dateOfTransaction, string fromPerson, string toPerson, string narrative, decimal amount)
         {
             this.dateOfTransaction = dateOfTransaction;
             this.fromPerson = fromPerson;
