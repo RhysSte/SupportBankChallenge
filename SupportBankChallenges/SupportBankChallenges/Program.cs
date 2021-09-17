@@ -167,13 +167,16 @@ namespace SupportBankChallenges
                 }
                 catch (FormatException e) 
                 {
+                    Logger.Error("It's Broken");
                     Console.WriteLine(e.GetType());
                    if (!Decimal.TryParse(columns[4], out decimal amount))
                     {
+                        Logger.Error("It's Broken for the amounts");
                         Console.WriteLine("Invalid Input, try using a decimal number input");
                     }
-                    if (!DateTime.TryParse(columns[1], out var dateOfTransaction))
+                    if (!DateTime.TryParse(columns[0], out var dateOfTransaction))
                     {
+                        Logger.Error("It's Broken for the dates");
                         Console.WriteLine("Invalid Input, try using a date format of DD/MM/YYYY");
                     }
                 }
